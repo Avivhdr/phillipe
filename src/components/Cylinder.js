@@ -29,7 +29,7 @@ const CylinderComponent = () => {
   return (
     <React.Fragment>
       <div>
-      {`\u2300`}:
+      {`diameter`}:
         <InputNumber 
           size="small"
           min={0}
@@ -38,7 +38,7 @@ const CylinderComponent = () => {
           onChange={setDiameter} />
       </div>
       <div>
-        h:
+        height:
         <InputNumber 
           size="small"
           min={0}
@@ -64,7 +64,7 @@ const CylinderComponent = () => {
           }
         >
           { products.map(({ value }) => (
-            <Option value={value}>{value}</Option>  
+            <Option key={value} value={value}>{value}</Option>  
           ))}
         </Select>
       </div>

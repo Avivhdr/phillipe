@@ -8,7 +8,7 @@ import products from '../products'
 // import { getVolByDiameterAndHeight } from './utils';
 const { Option } = Select;
 
-const CubeComponent = () => {
+const RectangleComponent = () => {
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
   const [length, setLength] = useState(0);
@@ -87,4 +87,4 @@ const CubeComponent = () => {
     )
 };
 
-export default CubeComponent;
+export default RectangleComponent;

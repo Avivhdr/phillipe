@@ -1,5 +1,6 @@
 import React from 'react';
 import "antd/dist/antd.css";
+import styled from 'styled-components';
 import { Tabs } from "antd";
 import './App.css';
 
@@ -11,41 +12,44 @@ import hollowCylinderIMG from './assets/hollowCylinder.jpeg';
 import CylinderComponent from "./components/Cylinder";
 import HollowCylinderComponent from "./components/HollowCylinder";
 import CubeComponent from "./components/Cube";
-import TriangleComponent from "./components/Triangle";
+import RectangleComponent from "./components/Rectangle";
 
 const { TabPane } = Tabs;
+
+const TabsStyled = styled(Tabs)`
+  &&& .ant-tabs-nav .ant-tabs-tab {
+    margin: 0;
+  }`;
 
 function App() {
   return (
       <div className="App">
-        <Tabs defaultActiveKey="1">
+        <TabsStyled defaultActiveKey="1">
           <TabPane
-            tab={
-              <img src={cylinderIMG} alt="cylinder" height="33" width="33"/>
-            }
             key="1"
+            tab={<img src={cylinderIMG} alt="cylinder" height="33" width="33"/>}
           >
             <CylinderComponent />
           </TabPane>
           <TabPane
-            tab={<img src={cubeIMG} alt="cube" height="33" width="33"/>}
             key="2"
+            tab={<img src={cubeIMG} alt="cube" height="33" width="33"/>}
           >
             <CubeComponent />
           </TabPane>
           <TabPane
-            tab={<img src={rectangleIMG} alt="rectangle" height="33" width="33"/>}
             key="3"
+            tab={<img src={rectangleIMG} alt="rectangle" height="33" width="33"/>}
           >
-            <TriangleComponent />
+            <RectangleComponent />
           </TabPane>
           <TabPane
-            tab={<img src={hollowCylinderIMG} alt="hollowCylinder" height="33" width="33"/>}
             key="4"
+            tab={<img src={hollowCylinderIMG} alt="hollowCylinder" height="33" width="33"/>}
           >
             <HollowCylinderComponent />
           </TabPane>
-        </Tabs>
+        </TabsStyled>
   </div>
   );
 }

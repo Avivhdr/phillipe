@@ -8,7 +8,7 @@ import products from '../products'
 import { getVolByDiameterAndHeight } from '../utils';
 const { Option } = Select;
 
-const CylinderComponent = () => {
+const HollowCylinderComponent = () => {
   const [diameter, setDiameter] = useState(0);
   const [height, setHeight] = useState(0);
   const [innerDiameter, setInnerDiameter] = useState(0);
@@ -34,7 +34,7 @@ const CylinderComponent = () => {
   return (
     <React.Fragment>
       <div>
-      {`\u2300`}:
+      diameter:
         <InputNumber 
           size="small"
           min={0}
@@ -43,7 +43,7 @@ const CylinderComponent = () => {
           onChange={setDiameter} />
       </div>
       <div>
-        h:
+        height:
         <InputNumber 
           size="small"
           min={0}
@@ -52,7 +52,7 @@ const CylinderComponent = () => {
           onChange={setHeight} />
       </ div>
       <div>
-        {`inner \u2300`}:
+        inner diameter:
         <InputNumber 
           size="small"
           min={0}
@@ -91,4 +91,4 @@ const CylinderComponent = () => {
     )
 };
 
-export default CylinderComponent;
+export default HollowCylinderComponent;
