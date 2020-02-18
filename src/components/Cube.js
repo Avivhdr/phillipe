@@ -4,14 +4,13 @@ import {
   InputNumber,
   Select,
 } from "antd";
-import products from './products'
-import { getVolByDiameterAndHeight } from './utils';
+import products from '../products'
+// import { getVolByDiameterAndHeight } from './utils';
 const { Option } = Select;
 
-const CylinderComponent = () => {
-  const [diameter, setDiameter] = useState(0);
-  const [height, setHeight] = useState(0);
-  const volInMM = getVolByDiameterAndHeight(diameter, height);
+const CubeComponent = () => {
+  const [side, setSide] = useState(0);
+  const volInMM = side**3;
   const [selectedProduct, setSelectedProduct] = useState(products[0]) 
 
   function onSelectChange(value) {
@@ -29,23 +28,14 @@ const CylinderComponent = () => {
   return (
     <React.Fragment>
       <div>
-      {`\u2300`}:
+      {`side`}:
         <InputNumber 
           size="small"
           min={0}
           max={100000}
-          defaultValue={diameter}
-          onChange={setDiameter} />
+          defaultValue={side}
+          onChange={setSide} />
       </div>
-      <div>
-        h:
-        <InputNumber 
-          size="small"
-          min={0}
-          max={100000}
-          defaultValue={height}
-          onChange={setHeight} />
-      </ div>
       <hr />
       <div>
         <b>Vol</b>:  {volInMM.toFixed(3)} mm<sup>3</sup>  /  {(volInMM/1000).toFixed(3)} ml
@@ -77,4 +67,4 @@ const CylinderComponent = () => {
     )
 };
 
-export default CylinderComponent;
+export default CubeComponent;
