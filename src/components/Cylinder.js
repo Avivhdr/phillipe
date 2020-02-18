@@ -66,7 +66,7 @@ const CylinderComponent = () => {
           { products.map(({ value }) => (
             <Option value={value}>{value}</Option>  
           ))}
-        </Select>,
+        </Select>
       </div>
       <div>
         A:   {(Vepoxy * volInMM).toFixed(3)} g
