@@ -24,30 +24,30 @@ const TabsStyled = styled(Tabs)`
 function App() {
   return (
       <div className="App">
-        <TabsStyled defaultActiveKey="1">
+        <TabsStyled defaultActiveKey="cylinder">
           <TabPane
-            key="1"
+            key="cylinder"
             tab={<img src={cylinderIMG} alt="cylinder" height="33" width="33"/>}
           >
             <CylinderComponent />
           </TabPane>
           <TabPane
-            key="2"
+            key="hollowCylinder"
+            tab={<img src={hollowCylinderIMG} alt="hollowCylinder" height="33" width="33"/>}
+          >
+            <HollowCylinderComponent />
+          </TabPane>
+          <TabPane
+            key="cube"
             tab={<img src={cubeIMG} alt="cube" height="33" width="33"/>}
           >
             <CubeComponent />
           </TabPane>
           <TabPane
-            key="3"
+            key="rectangle"
             tab={<img src={rectangleIMG} alt="rectangle" height="33" width="33"/>}
           >
             <RectangleComponent />
-          </TabPane>
-          <TabPane
-            key="4"
-            tab={<img src={hollowCylinderIMG} alt="hollowCylinder" height="33" width="33"/>}
-          >
-            <HollowCylinderComponent />
           </TabPane>
         </TabsStyled>
   </div>
