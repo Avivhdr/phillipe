@@ -1,3 +1,16 @@
+body {
+  background-image: url("./assets/bg.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left bottom;
+  /* margin-right: 200px; */
+  background-attachment: fixed;
+}
+
+.App {
+  padding: 20px;
+}
+
 /* .App {
   text-align: center;
 }
@@ -37,7 +50,3 @@
   }
 } */
 
-
-.App {
-  padding: 20px;
-}
