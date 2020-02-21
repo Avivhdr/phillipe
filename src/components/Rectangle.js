@@ -4,6 +4,7 @@ import {
   InputNumber,
   Select,
 } from "antd";
+import Styles from './styles';
 import products from '../products'
 // import { getVolByDiameterAndHeight } from './utils';
 const { Option } = Select;
@@ -29,39 +30,42 @@ const RectangleComponent = () => {
 
   return (
     <React.Fragment>
-      <div>
-      {`height`}:
+       <Styles.StyledDiv>
+        <Styles.StyledSpan>Height</Styles.StyledSpan>
         <InputNumber 
-          size="small"
+          size="medium"
           min={0}
           max={100000}
           defaultValue={height}
-          onChange={setHeight} />
-      </div>
-      <div>
-      {`width`}:
+          onChange={setHeight} 
+        />
+      </Styles.StyledDiv>
+      <Styles.StyledDiv>
+      <Styles.StyledSpan>Width</Styles.StyledSpan>
         <InputNumber 
-          size="small"
+          size="medium"
           min={0}
           max={100000}
           defaultValue={width}
           onChange={setWidth} />
-      </div>
-      <div>
-      {`length`}:
+      </Styles.StyledDiv>
+      <Styles.StyledDiv>
+      <Styles.StyledSpan>Length</Styles.StyledSpan>
         <InputNumber 
-          size="small"
+          size="medium"
           min={0}
           max={100000}
           defaultValue={length}
           onChange={setLength} />
-      </div>
+      </Styles.StyledDiv>
       <hr />
-      <div>
-        <b>Vol</b>:  {volInMM.toFixed(3)} mm<sup>3</sup>  /  {(volInMM/1000).toFixed(3)} ml
-      </div>
+      <Styles.StyledDiv>
+        <Styles.StyledSpan><b>Vol</b>:</Styles.StyledSpan>
+        <Styles.StyledSpan>{volInMM.toFixed(3)} mm<sup>3</sup>  /  {(volInMM/1000).toFixed(3)} ml</Styles.StyledSpan>
+      </Styles.StyledDiv>
       <hr />
-      <div>
+      <Styles.StyledDiv>
+        <Styles.StyledSpan>Product:</Styles.StyledSpan>
         <Select
           showSearch
           defaultValue={selectedProduct.value}
@@ -74,14 +78,15 @@ const RectangleComponent = () => {
           }
         >
           { products.map(({ value }) => (
-            <Option value={value}>{value}</Option>  
+            <Option key={value} value={value}>{value}</Option>  
           ))}
         </Select>
+      </Styles.StyledDiv>
+      <div style={{textAlign: 'center', marginTop: '20px'}}>
+        <Styles.StyledSpan><b>A:</b> {(Vepoxy * volInMM).toFixed(3)} g</Styles.StyledSpan>
       </div>
-      <div>
-        A:   {(Vepoxy * volInMM).toFixed(3)} g
-        <br />
-        B:   {(Vhard * volInMM).toFixed(3)} g
+      <div style={{textAlign: 'center', marginTop: '20px'}}>
+        <Styles.StyledSpan><b>B:</b> {(Vhard * volInMM).toFixed(3)} g</Styles.StyledSpan>
       </div>
     </ React.Fragment>
     )

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-
 import { 
   InputNumber,
   Select,
 } from "antd";
+import Styles from './styles';
 import products from '../products'
-// import { getVolByDiameterAndHeight } from './utils';
 const { Option } = Select;
 
 const CubeComponent = () => {
@@ -17,7 +16,7 @@ const CubeComponent = () => {
     setSelectedProduct(products
       .find((p) => p.value === value))
   }
-   
+
   const selectedProductMixRatio = products
     .find((p) => p.value === selectedProduct.value)
     .mixRatio;
@@ -27,21 +26,24 @@ const CubeComponent = () => {
 
   return (
     <React.Fragment>
-      <div>
-      {`side`}:
-        <InputNumber 
-          size="small"
+      <Styles.StyledDiv>
+        <Styles.StyledSpan>Side:</Styles.StyledSpan>
+        <InputNumber
+          type="number"
+          size="medium"
           min={0}
           max={100000}
           defaultValue={side}
           onChange={setSide} />
-      </div>
+      </Styles.StyledDiv>
       <hr />
-      <div>
-        <b>Vol</b>:  {volInMM.toFixed(3)} mm<sup>3</sup>  /  {(volInMM/1000).toFixed(3)} ml
-      </div>
+      <Styles.StyledDiv>
+        <Styles.StyledSpan><b>Vol</b>:</Styles.StyledSpan>
+        <Styles.StyledSpan>{volInMM.toFixed(3)} mm<sup>3</sup>  /  {(volInMM/1000).toFixed(3)} ml</Styles.StyledSpan>
+      </Styles.StyledDiv>
       <hr />
-      <div>
+      <Styles.StyledDiv>
+        <Styles.StyledSpan>Product:</Styles.StyledSpan>
         <Select
           showSearch
           defaultValue={selectedProduct.value}
@@ -54,15 +56,16 @@ const CubeComponent = () => {
           }
         >
           { products.map(({ value }) => (
-            <Option value={value}>{value}</Option>  
+            <Option key={value} value={value}>{value}</Option>  
           ))}
         </Select>
-      </div>
-      <div>
-        A:   {(Vepoxy * volInMM).toFixed(3)} g
-        <br />
-        B:   {(Vhard * volInMM).toFixed(3)} g
-      </div>
+        </Styles.StyledDiv>
+        <div style={{textAlign: 'center', marginTop: '20px'}}>
+          <Styles.StyledSpan><b>A:</b> {(Vepoxy * volInMM).toFixed(3)} g</Styles.StyledSpan>
+        </div>
+        <div style={{textAlign: 'center', marginTop: '20px'}}>
+          <Styles.StyledSpan><b>B:</b> {(Vhard * volInMM).toFixed(3)} g</Styles.StyledSpan>
+        </div>
     </ React.Fragment>
     )
 };
