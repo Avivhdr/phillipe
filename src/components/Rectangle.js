@@ -33,6 +33,7 @@ const RectangleComponent = () => {
        <Styles.StyledDiv>
         <Styles.StyledSpan>Height</Styles.StyledSpan>
         <InputNumber 
+          type="number"
           size="medium"
           min={0}
           max={100000}
@@ -43,6 +44,7 @@ const RectangleComponent = () => {
       <Styles.StyledDiv>
       <Styles.StyledSpan>Width</Styles.StyledSpan>
         <InputNumber 
+          type="number"
           size="medium"
           min={0}
           max={100000}
@@ -52,6 +54,7 @@ const RectangleComponent = () => {
       <Styles.StyledDiv>
       <Styles.StyledSpan>Length</Styles.StyledSpan>
         <InputNumber 
+          type="number"
           size="medium"
           min={0}
           max={100000}

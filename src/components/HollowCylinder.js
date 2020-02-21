@@ -36,7 +36,8 @@ const HollowCylinderComponent = () => {
     <React.Fragment>
       <Styles.StyledDiv>
         <Styles.StyledSpan>Diameter:</Styles.StyledSpan>
-        <InputNumber 
+        <InputNumber
+          type="number"
           size="medium"
           min={0}
           max={100000}
@@ -46,6 +47,7 @@ const HollowCylinderComponent = () => {
       <Styles.StyledDiv>
         <Styles.StyledSpan>Height:</Styles.StyledSpan>
         <InputNumber 
+          type="number"
           size="medium"
           min={0}
           max={100000}
@@ -55,6 +57,7 @@ const HollowCylinderComponent = () => {
       <Styles.StyledDiv>
         <Styles.StyledSpan>inner diameter:</Styles.StyledSpan>
         <InputNumber 
+          type="number"
           size="medium"
           min={0}
           max={100000}

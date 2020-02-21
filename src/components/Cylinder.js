@@ -31,7 +31,8 @@ const CylinderComponent = () => {
     <React.Fragment>
       <Styles.StyledDiv>
         <Styles.StyledSpan>Diameter:</Styles.StyledSpan>
-        <InputNumber 
+        <InputNumber
+          type="number"
           size="medium"
           min={0}
           max={100000}
@@ -40,7 +41,8 @@ const CylinderComponent = () => {
       </Styles.StyledDiv>
       <Styles.StyledDiv>
         <Styles.StyledSpan>Height:</Styles.StyledSpan>
-        <InputNumber 
+        <InputNumber
+          type="number"
           size="medium"
           min={0}
           max={100000}
