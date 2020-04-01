@@ -4,6 +4,8 @@ import {
   InputNumber,
   Select,
 } from "antd";
+
+import Result from './Result';
 import Styles from './styles';
 import products from '../products'
 import { getVolByDiameterAndHeight } from '../utils';
@@ -12,7 +14,8 @@ const { Option } = Select;
 const CylinderComponent = () => {
   const [diameter, setDiameter] = useState(0);
   const [height, setHeight] = useState(0);
-  const volInMM = getVolByDiameterAndHeight(diameter, height);
+  const volInCMM = getVolByDiameterAndHeight(diameter, height);
+  const volInML = volInCMM/1000;
   const [selectedProduct, setSelectedProduct] = useState(products[0]) 
 
   function onSelectChange(value) {
@@ -24,8 +27,8 @@ const CylinderComponent = () => {
     .find((p) => p.value === selectedProduct.value)
     .mixRatio;
 
-  const Vepoxy = volInMM/(1+(selectedProductMixRatio/100));
-  const Vhard = selectedProductMixRatio * Vepoxy;
+  const VolumeAInML = volInML/(1+(selectedProductMixRatio));
+  const VolumeBInML = selectedProductMixRatio * VolumeAInML;
 
   return (
     <React.Fragment>
@@ -51,11 +54,6 @@ const CylinderComponent = () => {
       </Styles.StyledDiv>
       <hr />
       <Styles.StyledDiv>
-        <Styles.StyledSpan><b>Vol</b>:</Styles.StyledSpan>
-        <Styles.StyledSpan>{volInMM.toFixed(3)} mm<sup>3</sup>  /  {(volInMM/1000).toFixed(3)} ml</Styles.StyledSpan>
-      </Styles.StyledDiv>
-      <hr />
-      <Styles.StyledDiv>
         <Styles.StyledSpan>Product:</Styles.StyledSpan>
         <Select
           showSearch
@@ -73,12 +71,13 @@ const CylinderComponent = () => {
           ))}
         </Select>
       </Styles.StyledDiv>
-      <div style={{textAlign: 'center', marginTop: '20px'}}>
-          <Styles.StyledSpan><b>A:</b> {(Vepoxy * volInMM).toFixed(3)} g</Styles.StyledSpan>
-        </div>
-        <div style={{textAlign: 'center', marginTop: '20px'}}>
-          <Styles.StyledSpan><b>B:</b> {(Vhard * volInMM).toFixed(3)} g</Styles.StyledSpan>
-        </div>
+      <hr />
+      <Result
+          volInCMM={volInCMM}
+          volInML={volInML}
+          VolumeAInML={VolumeAInML}
+          VolumeBInML={VolumeBInML}
+        ></Result>
     </ React.Fragment>
     )
 };

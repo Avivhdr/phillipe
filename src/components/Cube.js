@@ -3,13 +3,16 @@ import {
   InputNumber,
   Select,
 } from "antd";
+import Result from './Result';
 import Styles from './styles';
 import products from '../products'
 const { Option } = Select;
 
 const CubeComponent = () => {
   const [side, setSide] = useState(0);
-  const volInMM = side**3;
+  const volInCMM = side**3;
+  const volInML = volInCMM/1000;
+
   const [selectedProduct, setSelectedProduct] = useState(products[0]) 
 
   function onSelectChange(value) {
@@ -21,8 +24,8 @@ const CubeComponent = () => {
     .find((p) => p.value === selectedProduct.value)
     .mixRatio;
 
-  const Vepoxy = volInMM/(1+(selectedProductMixRatio/100));
-  const Vhard = selectedProductMixRatio * Vepoxy;
+  const VolumeAInML = volInML/(1+(selectedProductMixRatio));
+  const VolumeBInML = selectedProductMixRatio * VolumeAInML;
 
   return (
     <React.Fragment>
@@ -35,11 +38,6 @@ const CubeComponent = () => {
           max={100000}
           defaultValue={side}
           onChange={setSide} />
-      </Styles.StyledDiv>
-      <hr />
-      <Styles.StyledDiv>
-        <Styles.StyledSpan><b>Vol</b>:</Styles.StyledSpan>
-        <Styles.StyledSpan>{volInMM.toFixed(3)} mm<sup>3</sup>  /  {(volInMM/1000).toFixed(3)} ml</Styles.StyledSpan>
       </Styles.StyledDiv>
       <hr />
       <Styles.StyledDiv>
@@ -60,12 +58,13 @@ const CubeComponent = () => {
           ))}
         </Select>
         </Styles.StyledDiv>
-        <div style={{textAlign: 'center', marginTop: '20px'}}>
-          <Styles.StyledSpan><b>A:</b> {(Vepoxy * volInMM).toFixed(3)} g</Styles.StyledSpan>
-        </div>
-        <div style={{textAlign: 'center', marginTop: '20px'}}>
-          <Styles.StyledSpan><b>B:</b> {(Vhard * volInMM).toFixed(3)} g</Styles.StyledSpan>
-        </div>
+        <hr />      
+        <Result
+          volInCMM={volInCMM}
+          volInML={volInML}
+          VolumeAInML={VolumeAInML}
+          VolumeBInML={VolumeBInML}
+        ></Result>
     </ React.Fragment>
     )
 };
