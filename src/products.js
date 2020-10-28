@@ -16,7 +16,7 @@ const products = [
     mixRatio: 0.43,
   },
   {
-    value: 'Mr. Bot (50%)',
+    value: 'Mr. Boat (50%)',
     mixRatio: 0.5,
   },
 ];
