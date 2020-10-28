@@ -2,6 +2,7 @@ import React from 'react';
 import "antd/dist/antd.css";
 import styled from 'styled-components';
 import { Tabs } from "antd";
+
 import './App.css';
 
 import cylinderIMG from './assets/cylinder.png';
