@@ -14,7 +14,11 @@ const products = [
   {
     value: 'Resion Slow (43%)',
     mixRatio: 0.43,
-  }
+  },
+  {
+    value: 'Mr. Bot (50%)',
+    mixRatio: 0.5,
+  },
 ];
 
 export default products;
